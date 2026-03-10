@@ -1,0 +1,68 @@
+[project]
+name = "person-reid-project"
+version = "0.1.0"
+description = "AI 기반 사람 탐지 및 행동 분석 시스템"
+readme = "README.md"
+requires-python = ">=3.9,<3.14"
+dependencies = [
+    # Core ML frameworks
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "onnx>=1.14.0",
+    "onnxruntime>=1.15.0",
+    
+    # Computer Vision
+    "opencv-python>=4.8.0",
+    "mediapipe>=0.10.0",
+    "ultralytics>=8.0.0",  # YOLOv8
+    
+    # Image Processing
+    "Pillow>=10.0.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    
+    # Data handling
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    
+    # Web and API
+    "fastapi>=0.100.0",
+    "uvicorn>=0.23.0",
+    "websockets>=11.0.0",
+    "requests>=2.31.0",
+    
+    # Utilities
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+    "loguru>=0.7.0",
+    "tqdm>=4.65.0",
+    
+    # Development
+    "pytest>=7.4.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter>=1.0.0",
+    "ipykernel>=6.25.0",
+    "tensorboard>=2.13.0",
+    "wandb>=0.15.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/person_reid"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
